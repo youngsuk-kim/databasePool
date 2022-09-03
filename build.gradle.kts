@@ -31,6 +31,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    implementation("com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.8.0")
 }
 
 tasks.withType<KotlinCompile> {
