@@ -20,7 +20,9 @@ class JdbcEmployeeRepository(
             rs.getString("first_name"),
             rs.getString("last_name"),
             Gender.valueOf(rs.getString("gender")),
-            rs.getDate("hire_date")
+            rs.getDate("hire_date").toLocalDate(),
+            rs.getDate("birth_date").toLocalDate(),
+            rs.getString("evaluation_text")
         )
     }
 

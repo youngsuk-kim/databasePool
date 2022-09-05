@@ -1,40 +1,53 @@
 package com.example.laboratory.domain
 
 import com.example.laboratory.enums.Gender
+import org.springframework.data.domain.Persistable
 import java.time.LocalDate
 import java.util.Date
 import javax.persistence.Column
 import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.GenerationType
 import javax.persistence.Id
 import javax.persistence.Lob
+import javax.persistence.PostLoad
+import javax.persistence.PrePersist
 import javax.persistence.Table
+import javax.persistence.Transient
 
 @Entity
 @Table(name = "employees")
 class Employee(
-    id: Int,
+    empId: Int? = null,
     firstName: String,
     lastName: String,
     gender: Gender,
-    hireDate: Date
+    hireDate: LocalDate,
+    birthDate: LocalDate,
+    evaluationText: String
 ) {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "emp_no", nullable = false)
-    var id: Int? = id
+    var empId: Int? = empId
 
     @Column(name = "birth_date", nullable = false)
-    var birthDate: LocalDate? = null
+    var birthDate: LocalDate? = birthDate
 
     @Column(name = "first_name", nullable = false, length = 14)
-    var firstName: String? = null
+    var firstName: String? = firstName
 
     @Column(name = "last_name", nullable = false, length = 16)
-    var lastName: String? = null
+    var lastName: String? = lastName
 
     @Lob
     @Column(name = "gender", nullable = false)
-    var gender: String? = null
+    var gender: String? = gender.toString()
 
     @Column(name = "hire_date", nullable = false)
-    var hireDate: Date? = null
+    var hireDate: LocalDate? = hireDate
+
+    @Column(columnDefinition = "TEXT")
+    var evaluationText: String = evaluationText
 }

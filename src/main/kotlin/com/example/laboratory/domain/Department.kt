@@ -2,6 +2,8 @@ package com.example.laboratory.domain
 
 import javax.persistence.Column
 import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.GenerationType
 import javax.persistence.Id
 import javax.persistence.Index
 import javax.persistence.Table
@@ -14,6 +16,7 @@ import javax.persistence.Table
 )
 class Department {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "dept_no", nullable = false, length = 4)
     var id: String? = null
 

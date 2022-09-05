@@ -4,11 +4,22 @@ spring:
     username: root
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
-      maximum-pool-size: 20
+      maximum-pool-size: 1
+      auto-commit: false
+  jpa:
+    properties:
+      hibernate:
+        connection:
+          autocommit: false
+        generate_statistics: true
+    hibernate:
+      ddl-auto: update
 
 logging:
   level:
     com.zaxxer.hikari.HikariConfig: DEBUG
     com.zaxxer.hikari: TRACE
-
-debug: true
+    org.springframework.orm.jpa: TRACE
+    org.springframework.transaction: TRACE
+    java.sql: DEBUG
+    org.hibernate.stat.category: DEBUG

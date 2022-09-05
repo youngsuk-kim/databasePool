@@ -10,13 +10,13 @@ export const options = {
         http_req_duration: ['p(95)<1000'], // 95% of requests should be below 250ms
     },
     stages: [
-        { duration: '15s', target: 100 },   // simulate ramp-up of traffic from 1 to 20 users over 30 seconds.
+        { duration: '20m', target: 100000 },   // simulate ramp-up of traffic from 1 to 20 users over 30 seconds.
     ],
 };
 
 export default function () {
 
-    const res = http.get(`${BASE_URL}/api/employees`);
+    const res = http.post(`${BASE_URL}/api/employees`);
     console.log(res.status)
 
     check(res, { 'status was 200': (r) => r.status == 200 });
